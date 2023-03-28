@@ -22,7 +22,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.primary.main;
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const response = await fetch(`https://mernsns-server-production.up.railway.app:3001/users/${userId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

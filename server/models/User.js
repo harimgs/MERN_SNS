@@ -17,8 +17,8 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
       max: 50,
+      unique: true,
     },
     password: {
       type: String,
@@ -35,12 +35,11 @@ const UserSchema = new mongoose.Schema(
     },
     location: String,
     occupation: String,
-    viewdProfile: Number,
+    viewedProfile: Number,
     impressions: Number,
   },
   { timestamps: true }
 );
 
 const User = mongoose.model("User", UserSchema);
-
 export default User;

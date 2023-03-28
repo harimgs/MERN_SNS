@@ -11,10 +11,10 @@ export const register = async (req, res) => {
       email,
       password,
       picturePath,
-      friedns,
+      friends,
       location,
       occupation,
-    } = req.boddy;
+    } = req.body;
 
     // Password ecryption
     const salt = await bcrypt.genSalt();
@@ -26,7 +26,7 @@ export const register = async (req, res) => {
       email,
       password: passwordHash,
       picturePath,
-      friedns,
+      friends,
       location,
       occupation,
       viewdProfile: Math.floor(Math.random() * 10000),
@@ -53,7 +53,7 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credential " });
 
-    const token = jwt.sign({ id: user._id }, process.env.SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     delete user.password; // delete user after token generated, so password data doesn't go to frontend
     res.status(200).json({ token, user });
   } catch (err) {
